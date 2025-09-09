@@ -38,6 +38,19 @@ data class UserDatas(
     val email: String?
 )
 
+data class MenuItem(
+    val id: String,
+    val title: String?,
+    val subtitle: String?,
+    val type: String?,
+    val icon: String? = null,
+    val status: Boolean = false,  // Valor predeterminado
+    val moduleOrder: Int? = null,
+    val link: String,
+    val parentModuleId: String? = null,
+    val children: List<MenuItem>? = null
+)
+
 
 fun decodeToken(token: String): User? {
     return try {
