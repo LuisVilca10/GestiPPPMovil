@@ -37,6 +37,22 @@ data class UserDatas(
     val username: String,
     val email: String?
 )
+// REGISTER
+@Serializable
+data class LoginInput(
+    val name: String,
+    val last_name: String,
+    val username: String,
+    val email: String,
+    val password: String
+)
+
+@Serializable
+data class RegisterResponse(
+    val status: Boolean? = null,
+    val message: String,
+    val data: ResponseData? = null   // allow absence of 'data'
+)
 
 data class MenuItem(
     val id: String,
@@ -51,7 +67,29 @@ data class MenuItem(
     val children: List<MenuItem>? = null
 )
 
+@Serializable
+data class ResponseData(
+    val token: String,
+    val user: UserResponse,
+    val roles: List<String>
+)
 
+@Serializable
+data class UserResponse(
+    val id: Int,
+    val username: String,
+    val email: String
+)
+
+@Serializable
+data class UpdateProfileDTO(
+    val name: String,
+    val last_name: String,
+    val code: String,
+    val username: String,
+    val email: String,
+    val imagen_url: String
+)
 fun decodeToken(token: String): User? {
     return try {
         // Dividir el token en sus 3 partes: header, payload, signature

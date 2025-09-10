@@ -1,7 +1,11 @@
 package pe.edu.upeu
 
 
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Surface
 import androidx.compose.runtime.*
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalLifecycleOwner
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.compose.rememberNavController
@@ -17,43 +21,34 @@ import pe.edu.upeu.presentation.theme.ThemeViewModel
 
 @Composable
 fun App() {
-    // Pedimos a Koin el ViewModel que maneja el tema (oscuro o claro)
+    val navController = rememberNavController()
+    val sessionManager: SessionManager = koinInject()
+    val scope = rememberCoroutineScope()
+
+    // 🔹 Aquí obtienes el estado del tema desde tu ThemeViewModel
     val themeViewModel: ThemeViewModel = koinInject()
+    val isDarkMode by themeViewModel.isDarkMode.collectAsState()
 
-    // Obtenemos el estado actual del modo oscuro y lo actualizamos automáticamente si cambia
-    val isDarkMode by themeViewModel.isDarkMode.collectAsStateWithLifecycle(
-        initialValue = false, // Empezamos en modo claro si no hay información
-        lifecycle = LocalLifecycleOwner.current.lifecycle
-    )
-
-    // Aplicamos el tema (oscuro o claro) a toda la app
-    AppTheme (darkTheme = isDarkMode) {
-        // Todo lo que hagamos aquí puede usar objetos de Koin
-        KoinContext {
-            // Creamos un controlador de navegación para cambiar entre pantallas
-            val navController = rememberNavController()
-
-            // Pedimos a Koin el SessionManager para manejar login/logout
-            val sessionManager: SessionManager = koinInject()
-
-            // Creamos un scope para lanzar tareas en segundo plano
-            val scope = rememberCoroutineScope()
-
-            // Proveemos el HomeViewModel dentro de esta sección
-            ProvideHomeViewModel {
-                // Definimos todas las rutas y pantallas de la app
-                NavigationGraph(
-                    navController = navController,
-                    // Esto pasa cuando el usuario cierra sesión
-                    onLogout = {
-                        scope.launch {
-                            sessionManager.clearSession() // Borramos los datos de sesión
-                            navController.navigate(Routes.LOGIN) { // Volvemos a la pantalla de inicio
-                                popUpTo(0) { inclusive = true } // Limpiamos el historial
+    KoinContext {
+        ProvideHomeViewModel {
+            // 🔹 El AppTheme envuelve TODO
+            AppTheme(darkTheme = isDarkMode) {
+                Surface(
+                    modifier = Modifier.fillMaxSize(),
+                    color = MaterialTheme.colorScheme.background
+                ) {
+                    NavigationGraph(
+                        navController = navController,
+                        onLogout = {
+                            scope.launch {
+                                sessionManager.clearSession()
+                                navController.navigate(Routes.LAND_PAGE) {
+                                    popUpTo(0) { inclusive = true }
+                                }
                             }
                         }
-                    }
-                )
+                    )
+                }
             }
         }
     }

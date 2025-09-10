@@ -18,6 +18,7 @@ class SessionManager(private val dataStore: DataStore<Preferences>) {
 
     companion object {
         // 🔹 Llaves para guardar y leer datos en DataStore
+        // 🔹 Definición completa y organizada de todas las claves necesarias
         private val KEY_USER_ID = stringPreferencesKey("user_id")
         private val KEY_USER_EMAIL = stringPreferencesKey("user_email")
         private val KEY_USER_NAME = stringPreferencesKey("user_name")

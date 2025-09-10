@@ -11,7 +11,7 @@ import androidx.compose.ui.graphics.Color
 
 object AppColors {
     // Light Theme Colors - Paleta vibrante para aventuras
-    val Primary = Color(0xFF1E1F22)        // Azul Google (confianza/profesionalismo)
+    val Primary = Color(0xFF4285F4)        // Azul Google (confianza/profesionalismo)
     val PrimaryVariant = Color(0xFF3367D6) // Azul más oscuro
     val Secondary = Color(0xFF34A853)      // Verde éxito (naturaleza/aventura)
     val SecondaryVariant = Color(0xFF1E8E3E) // Verde más oscuro

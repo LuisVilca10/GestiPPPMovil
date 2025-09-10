@@ -12,6 +12,7 @@ import pe.edu.upeu.domain.usecase.LoginUseCase
 class LoginViewModel(
     private val loginUseCase: LoginUseCase,
     private val sessionManager: SessionManager,
+
     ) : ViewModel() {
 
     private val _loginState = MutableStateFlow<LoginState>(LoginState.Initial)
@@ -45,8 +46,8 @@ class LoginViewModel(
 
                         // Manejo de errores con mensajes específicos
                         val errorMessage = when {
-                            error.message?.contains("Usuario o contraseña incorrectos") == true ->
-                                "Usuario o contraseña incorrectos. Inténtalo nuevamente."
+                            error.message?.contains("Correo o contraseña incorrectos") == true ->
+                                "Correo o contraseña incorrectos. Inténtalo nuevamente."
                             else -> "No se pudo iniciar sesión. Verifica tu conexión e intenta de nuevo."
                         }
 
@@ -55,7 +56,6 @@ class LoginViewModel(
 
                         _loginState.value = LoginState.Error(errorMessage)
                     }
-
             } catch (e: Exception) {
                 // Depuración: Excepción no controlada
                 println("Exception during login process: ${e.message}")

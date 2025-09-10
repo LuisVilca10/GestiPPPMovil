@@ -1,14 +1,20 @@
 [versions]
+accompanistPermissions = "0.37.2"
+accompanistSwiperefresh = "0.34.0"
 agp = "8.12.2"
 kotlin = "2.0.21"
+android = "11.11.0"
 coreKtx = "1.10.1"
 junit = "4.13.2"
 junitVersion = "1.1.5"
 espressoCore = "3.5.1"
 lifecycleRuntimeKtx = "2.6.1"
 activityCompose = "1.8.0"
+coilCompose = "2.5.0"
 composeBom = "2024.09.00"
 datastorePreferences = "1.1.7"
+mapsCompose = "4.2.0"
+mapsComposeVersion = "11.11.0"
 koinAndroid = "3.5.3"
 koinAndroidxCompose = "3.5.3"
 kotlinxCoroutinesAndroid = "1.10.2"
@@ -16,14 +22,23 @@ kotlinxDatetime = "0.6.2"
 kotlinxSerializationJson = "1.8.1"
 ktorClientContentNegotiation = "3.1.2"
 ktorClientCore = "3.1.2"
+navigationCompose = "2.6.0"
+navigationComposeVersion = "2.8.9"
 ktorClientLogging = "3.1.2"
 ktorClientOkhttp = "3.1.2"
 ktorSerializationKotlinxJson = "3.1.2"
+playServicesLocation = "21.3.0"
+playServicesMaps = "19.2.0"
 
 [libraries]
+accompanist-permissions = { module = "com.google.accompanist:accompanist-permissions", version.ref = "accompanistPermissions" }
+accompanist-swiperefresh = { module = "com.google.accompanist:accompanist-swiperefresh", version.ref = "accompanistSwiperefresh" }
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
+androidx-navigation-compose = { module = "androidx.navigation:navigation-compose", version.ref = "navigationCompose" }
+androidx-navigation-compose-v289 = { module = "androidx.navigation:navigation-compose", version.ref = "navigationComposeVersion" }
+android = { module = "com.mapbox.maps:android", version.ref = "android" }
 androidx-material-icons-extended = { module = "androidx.compose.material:material-icons-extended" }
 androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
 androidx-lifecycle-runtime-ktx = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version.ref = "lifecycleRuntimeKtx" }
@@ -33,9 +48,11 @@ androidx-ui = { group = "androidx.compose.ui", name = "ui" }
 androidx-ui-graphics = { group = "androidx.compose.ui", name = "ui-graphics" }
 androidx-ui-tooling = { group = "androidx.compose.ui", name = "ui-tooling" }
 androidx-ui-tooling-preview = { group = "androidx.compose.ui", name = "ui-tooling-preview" }
+extension-maps-compose = { module = "com.mapbox.extension:maps-compose", version.ref = "mapsComposeVersion" }
 androidx-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-manifest" }
 androidx-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit4" }
 androidx-material3 = { group = "androidx.compose.material3", name = "material3" }
+coil-compose = { module = "io.coil-kt:coil-compose", version.ref = "coilCompose" }
 koin-android = { module = "io.insert-koin:koin-android", version.ref = "koinAndroid" }
 koin-androidx-compose = { module = "io.insert-koin:koin-androidx-compose", version.ref = "koinAndroidxCompose" }
 kotlinx-coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "kotlinxCoroutinesAndroid" }
@@ -43,9 +60,12 @@ kotlinx-datetime = { module = "org.jetbrains.kotlinx:kotlinx-datetime", version.
 kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinxSerializationJson" }
 ktor-client-content-negotiation = { module = "io.ktor:ktor-client-content-negotiation", version.ref = "ktorClientContentNegotiation" }
 ktor-client-core = { module = "io.ktor:ktor-client-core", version.ref = "ktorClientCore" }
+maps-compose = { module = "com.google.maps.android:maps-compose", version.ref = "mapsCompose" }
 ktor-client-logging = { module = "io.ktor:ktor-client-logging", version.ref = "ktorClientLogging" }
 ktor-client-okhttp = { module = "io.ktor:ktor-client-okhttp", version.ref = "ktorClientOkhttp" }
+play-services-location = { module = "com.google.android.gms:play-services-location", version.ref = "playServicesLocation" }
 ktor-serialization-kotlinx-json = { module = "io.ktor:ktor-serialization-kotlinx-json", version.ref = "ktorSerializationKotlinxJson" }
+play-services-maps = { module = "com.google.android.gms:play-services-maps", version.ref = "playServicesMaps" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

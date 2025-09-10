@@ -57,6 +57,22 @@ dependencies {
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
 
+    // Carga de imágenes
+    implementation(libs.coil.compose)
+
+    // Navigation Compose
+    implementation(libs.androidx.navigation.compose)
+
+    // MapBox
+    implementation(libs.androidx.navigation.compose.v289)
+    implementation(libs.android)
+    implementation (libs.extension.maps.compose)
+    implementation(libs.play.services.location)
+    implementation (libs.accompanist.permissions)
+
+    // Fecha y hora
+    implementation(libs.kotlinx.datetime)
+
     // Ktor para networking
     implementation(libs.ktor.serialization.kotlinx.json)
 
@@ -68,6 +84,7 @@ dependencies {
     implementation(libs.koin.androidx.compose)
 
     // UI helpers
+    implementation(libs.accompanist.swiperefresh)
     implementation(libs.androidx.material.icons.extended)
 
     // Ktor para networking
